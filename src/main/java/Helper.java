@@ -1,7 +1,10 @@
 import java.util.ArrayList;
-
+import java.io.*;
+import java.util.*;
 
 public class Helper{
+  Card card = new Card();
+  Random rand = new Random();
   //Takes the card value and suit and creates a Card object with int value 
   public int Value_Card_Assigner(String card){
     if(card.equalsIgnoreCase("Ace") || 
@@ -64,7 +67,25 @@ public class Helper{
         return 0;
     }
 
-  public ArrayList<Card> make_deck(){
+  
+
+  public void remove_hands(Hand one, Hand two, ArrayList<Card> deck){
+    Card first = one.getCardOne();
+    Card second = one.getCardTwo();
+    Card third = two.getCardOne();
+    Card fourth = two.getCardTwo();
+    int i = 0;
+    while(i < deck.size()){
+      if(cardEqual(first, deck.get(i))){
+        deck.remove(i);
+        i--;
+      } else {
+        i++;
+      }
+    }
+  }
+  
+  public ArrayList<Card> make_deck(Hand one, Hand two){
     ArrayList<Integer> ranks = new ArrayList<Integer>();
     ArrayList<Integer> suits = new ArrayList<Integer>();
     ArrayList<Card> deck = new ArrayList<Card>();
@@ -81,6 +102,28 @@ public class Helper{
       }
     }
     return deck;
+  }
+
+  public ArrayList<Card> make_river(){
+    ArrayList<Card> river = new ArrayList<Card>();
+    ArrayList<Card> deck = make_deck();
+    for (int i = 0; i< 5; i++) {
+      int randomNum = (int)(Math.random() * (52-i));
+      river.add(deck.get(randomNum));
+    }
+    return river;
+  }
+
+  public void print_river(ArrayList<Card> river){
+    ArrayList<String> display = new ArrayList<String>();
+    for (int i = 0; i< 5; i++) {
+      Card temp = river.get(i);
+      String sentence = temp.getValue() + "of " + temp.getSuit();
+      display.add(sentence);
+    }
+    for (int i = 0; i < display.size(); i++) {
+      System.out.println(display.get(i));
+    }
   }
   
 }

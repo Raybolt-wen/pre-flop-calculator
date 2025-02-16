@@ -5,6 +5,12 @@ public class Hand {
     this.one = one;
     this.two = two;
   }
+  public Card getCardOne(){
+    return one;
+  }
+  public Card getCardTwo(){
+    return two;
+  }
   public boolean get_pair(){
     if(one.getValue() == two.getValue()){
       return true;

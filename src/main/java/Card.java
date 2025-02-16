@@ -11,4 +11,13 @@ public class Card {
   public int getValue(){
     return value;
   }
+
+  public boolean cardEqual(Card one, Card two){
+    if (one.getValue() ==  two.getValue() && one.getSuit() ==  two.getSuit()){
+      return true;
+    } else {
+      return false;
+    }
+  
+  }
 }
