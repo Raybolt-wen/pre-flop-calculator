@@ -10,7 +10,7 @@ public class Main {
       //List of all the suits
       ArrayList<Integer> suits = new ArrayList<Integer>();
       Scanner myObj = new Scanner(System.in);
-      //reads the ranks and the suits and puts them into their       respective lists
+      //reads the ranks and the suits and puts them into their respective lists
       for(int i = 1; i < 5; i++){
         System.out.println("Enter number" + i + " card rank ");
         String rank = myObj.nextLine();

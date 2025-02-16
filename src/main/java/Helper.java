@@ -1,11 +1,9 @@
-import java.io.*;
-import java.util.Scanner;
 import java.util.ArrayList;
 
 
 public class Helper{
   //Takes the card value and suit and creates a Card object with int value 
-  public static int Value_Card_Assigner(String card){
+  public int Value_Card_Assigner(String card){
     if(card.equalsIgnoreCase("Ace") || 
        card.equalsIgnoreCase("A")){
       return 1;
@@ -49,7 +47,7 @@ public class Helper{
       return 0;
   }  
 
-    public static int Suit_Card_Assigner(String card){
+    public int Suit_Card_Assigner(String card){
       if(card.equalsIgnoreCase("Spades") ||
          card.equalsIgnoreCase("S")){
         return 1;
@@ -66,7 +64,7 @@ public class Helper{
         return 0;
     }
 
-  public static ArrayList<Card> make_deck(){
+  public ArrayList<Card> make_deck(){
     ArrayList<Integer> ranks = new ArrayList<Integer>();
     ArrayList<Integer> suits = new ArrayList<Integer>();
     ArrayList<Card> deck = new ArrayList<Card>();
