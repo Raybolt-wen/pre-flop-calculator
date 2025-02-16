@@ -1,14 +1,34 @@
-// import static org.junit.jupiter.api.Assertions.assertEquals;
-
-// import org.junit.jupiter.api.Test;
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
+  
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+      //List of all the ranks
+      ArrayList<Integer> ranks = new ArrayList<Integer>();
+      //List of all the suits
+      ArrayList<Integer> suits = new ArrayList<Integer>();
+      Scanner myObj = new Scanner(System.in);
+      //reads the ranks and the suits and puts them into their       respective lists
+      for(int i = 1; i < 5; i++){
+        System.out.println("Enter number" + i + " card rank ");
+        String rank = myObj.nextLine();
+        int make_rank = Value_Card_Assigner(rank);
+        ranks.add(make_rank);
+        System.out.println("Enter number" + i + " card suit");
+        String suit = myObj.nextLine();  
+        int make_suit = Suit_Card_Assigner(suit);
+        suits.add(make_suit);
+      }
+      Card C_1 = new Card(suits.get(0), ranks.get(0));
+      Card C_2 = new Card(suits.get(1), ranks.get(1));
+      Hand H_1 = new Hand(C_1, C_2);
+      Card C_3 = new Card(suits.get(2), ranks.get(2));
+      Card C_4 = new Card(suits.get(3), ranks.get(3));
+      Hand H_2 = new Hand(C_3, C_4);
+      System.out.println(H_1.toString());
   }
 
-  // @Test
-  // void addition() {
-  //     assertEquals(2, 1 + 1);
-  // }
 }
+
