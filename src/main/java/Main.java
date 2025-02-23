@@ -6,12 +6,14 @@ public class Main {
   
   public static void main(String[] args) {
     Helper helper = new Helper();
+    Deck deckHelper = new Deck(new ArrayList<Card>());
     Scanner myObj = new Scanner(System.in);
       //List of all the ranks
       ArrayList<Integer> ranks = new ArrayList<Integer>();
       //List of all the suits
       ArrayList<Integer> suits = new ArrayList<Integer>();
       //reads the ranks and the suits and puts them into their respective lists
+      
       for(int i = 1; i < 5; i++){
         System.out.println("Enter number" + i + " card rank ");
         String rank = myObj.nextLine();
@@ -28,8 +30,15 @@ public class Main {
       Card C_3 = new Card(suits.get(2), ranks.get(2));
       Card C_4 = new Card(suits.get(3), ranks.get(3));
       Hand H_2 = new Hand(C_3, C_4);
-      ArrayList<Card> river = helper.make_river();
-      helper.print_river(river);
+      ArrayList<Card> river = deckHelper.make_river(H_1, H_2);
+      river.add(C_1);
+      river.add(C_2);
+      ArrayList<Integer> Information = new ArrayList<Integer>();
+      ArrayList<Integer> rank_river = new ArrayList<Integer>();
+      ArrayList<Integer> suit_river = new ArrayList<Integer>();
+            River rivered = new River(river, Information, rank_river, suit_river);
+      
+      
       
   }
 

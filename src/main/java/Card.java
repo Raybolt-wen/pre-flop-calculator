@@ -12,12 +12,11 @@ public class Card {
     return value;
   }
 
-  public boolean cardEqual(Card one, Card two){
-    if (one.getValue() ==  two.getValue() && one.getSuit() ==  two.getSuit()){
-      return true;
-    } else {
-      return false;
-    }
+  public boolean cardEqual(Card two){
+    return((this.getValue() == two.getValue()) && (this.getSuit() == two.getSuit()));
+      }
   
+  public void printCard(){
+    System.out.println(this.getSuit() + "of " + this.getValue());
   }
 }

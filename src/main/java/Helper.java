@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.*;
 
 public class Helper{
-  Card card = new Card();
   Random rand = new Random();
   //Takes the card value and suit and creates a Card object with int value 
   public int Value_Card_Assigner(String card){
@@ -67,63 +66,52 @@ public class Helper{
         return 0;
     }
 
-  
+      public ArrayList<Integer> mergeSort(ArrayList<Integer> numbers) {
+          if (numbers.size() <= 1) {
+              return numbers; // Base case: array is already sorted
+          }
 
-  public void remove_hands(Hand one, Hand two, ArrayList<Card> deck){
-    Card first = one.getCardOne();
-    Card second = one.getCardTwo();
-    Card third = two.getCardOne();
-    Card fourth = two.getCardTwo();
-    int i = 0;
-    while(i < deck.size()){
-      if(cardEqual(first, deck.get(i))){
-        deck.remove(i);
-        i--;
-      } else {
-        i++;
+          // Split the list in half
+          int mid = numbers.size() / 2;
+          ArrayList<Integer> left = new ArrayList<Integer>(numbers.subList(0, mid));
+          ArrayList<Integer> right = new ArrayList<Integer>(numbers.subList(mid, numbers.size()));
+
+          // Recursively sort both halves
+          left = mergeSort(left);
+          right = mergeSort(right);
+
+          // Merge the sorted halves
+          return merge(left, right);
       }
-    }
-  }
   
-  public ArrayList<Card> make_deck(Hand one, Hand two){
-    ArrayList<Integer> ranks = new ArrayList<Integer>();
-    ArrayList<Integer> suits = new ArrayList<Integer>();
-    ArrayList<Card> deck = new ArrayList<Card>();
-    for(int i = 1; i < 15; i++){
-      ranks.add(i);
-    }
-    for(int i = 1; i < 5; i++){
-      suits.add(i);
-    }
-    for(int i = 1; i < 14; i++){
-      for(int j = 1; j < 5; j++){
-        Card c = new Card(j, i);
-        deck.add(c);
+      private ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right) {
+          ArrayList<Integer> merged = new ArrayList<Integer>();
+          int i = 0, j = 0;
+
+          // Merge the two lists while there are elements in both
+          while (i < left.size() && j < right.size()) {
+              if (left.get(i) <= right.get(j)) {
+                  merged.add(left.get(i));
+                  i++;
+              } else {
+                  merged.add(right.get(j));
+                  j++;
+              }
+          }
+
+          // Add any remaining elements from the left list
+          while (i < left.size()) {
+              merged.add(left.get(i));
+              i++;
+          }
+
+          // Add any remaining elements from the right list
+          while (j < right.size()) {
+              merged.add(right.get(j));
+              j++;
+          }
+
+          return merged;
       }
-    }
-    return deck;
-  }
-
-  public ArrayList<Card> make_river(){
-    ArrayList<Card> river = new ArrayList<Card>();
-    ArrayList<Card> deck = make_deck();
-    for (int i = 0; i< 5; i++) {
-      int randomNum = (int)(Math.random() * (52-i));
-      river.add(deck.get(randomNum));
-    }
-    return river;
-  }
-
-  public void print_river(ArrayList<Card> river){
-    ArrayList<String> display = new ArrayList<String>();
-    for (int i = 0; i< 5; i++) {
-      Card temp = river.get(i);
-      String sentence = temp.getValue() + "of " + temp.getSuit();
-      display.add(sentence);
-    }
-    for (int i = 0; i < display.size(); i++) {
-      System.out.println(display.get(i));
-    }
-  }
-  
 }
+  
