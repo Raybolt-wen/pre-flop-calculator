@@ -9,7 +9,11 @@ class River {
   ArrayList<Integer> Information = new ArrayList<Integer>();
   ArrayList<Integer> rank_river = new ArrayList<Integer>();
   ArrayList<Integer> suit_river = new ArrayList<Integer>();
-  public River() {
+  public River(ArrayList<Card> river, ArrayList<Integer> Information, ArrayList<Integer> rank_river, ArrayList<Integer> suit_river) {
+     this.river = river;
+     this.Information = Information;
+     this.rank_river = rank_river;
+     this.suit_river = suit_river;
      Deck decked = new Deck(river);
      this.rank_river = deckHelper.makeRankList(decked);
      this.suit_river = deckHelper.makeSuitList(decked);
