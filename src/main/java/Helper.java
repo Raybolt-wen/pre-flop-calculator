@@ -170,45 +170,47 @@ public class Helper{
   
 }
   
-public ArrayList<Card> mergeSortCards(ArrayList<Card> cards) {
-    if (cards.size() <= 1) {
-        return cards;
-    }
+public ArrayList<Integer> mergeSort(ArrayList<Integer> list) {
+  if (list.size() <= 1) {
+    return list;
+  }
 
-    int mid = cards.size() / 2;
-    ArrayList<Card> left = new ArrayList<Card>(cards.subList(0, mid));
-    ArrayList<Card> right = new ArrayList<Card>(cards.subList(mid, cards.size()));
+  int mid = list.size() / 2;
+  ArrayList<Integer> left = new ArrayList<>(list.subList(0, mid));
+  ArrayList<Integer> right = new ArrayList<>(list.subList(mid, list.size()));
 
-    left = mergeSortCards(left);
-    right = mergeSortCards(right);
+  left = mergeSort(left);
+  right = mergeSort(right);
 
-    return mergeCards(left, right);
+  return merge(left, right);
 }
 
-private ArrayList<Card> mergeCards(ArrayList<Card> left, ArrayList<Card> right) {
-    ArrayList<Card> merged = new ArrayList<Card>();
-    int leftIndex = 0;
-    int rightIndex = 0;
+private ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right) {
+  ArrayList<Integer> result = new ArrayList<>();
+  int leftIndex = 0;
+  int rightIndex = 0;
 
-    while (leftIndex < left.size() && rightIndex < right.size()) {
-        if (left.get(leftIndex).getValue() <= right.get(rightIndex).getValue()) {
-            merged.add(left.get(leftIndex));
-            leftIndex++;
-        } else {
-            merged.add(right.get(rightIndex));
-            rightIndex++;
-        }
+  while (leftIndex < left.size() && rightIndex < right.size()) {
+    if (left.get(leftIndex) <= right.get(rightIndex)) {
+      result.add(left.get(leftIndex));
+      leftIndex++;
+    } else {
+      result.add(right.get(rightIndex));
+      rightIndex++;
     }
+  }
 
-    while (leftIndex < left.size()) {
-        merged.add(left.get(leftIndex));
-        leftIndex++;
-    }
+  while (leftIndex < left.size()) {
+    result.add(left.get(leftIndex));
+    leftIndex++;
+  }
 
-    while (rightIndex < right.size()) {
-        merged.add(right.get(rightIndex));
-        rightIndex++;
-    }
+  while (rightIndex < right.size()) {
+    result.add(right.get(rightIndex));
+    rightIndex++;
+  }
 
-    return merged;
+  return result;
 }
+
+
