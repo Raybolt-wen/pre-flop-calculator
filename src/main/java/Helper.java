@@ -170,47 +170,4 @@ public class Helper{
   
 }
   
-public ArrayList<Integer> mergeSort(ArrayList<Integer> list) {
-  if (list.size() <= 1) {
-    return list;
-  }
-
-  int mid = list.size() / 2;
-  ArrayList<Integer> left = new ArrayList<>(list.subList(0, mid));
-  ArrayList<Integer> right = new ArrayList<>(list.subList(mid, list.size()));
-
-  left = mergeSort(left);
-  right = mergeSort(right);
-
-  return merge(left, right);
-}
-
-private ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right) {
-  ArrayList<Integer> result = new ArrayList<>();
-  int leftIndex = 0;
-  int rightIndex = 0;
-
-  while (leftIndex < left.size() && rightIndex < right.size()) {
-    if (left.get(leftIndex) <= right.get(rightIndex)) {
-      result.add(left.get(leftIndex));
-      leftIndex++;
-    } else {
-      result.add(right.get(rightIndex));
-      rightIndex++;
-    }
-  }
-
-  while (leftIndex < left.size()) {
-    result.add(left.get(leftIndex));
-    leftIndex++;
-  }
-
-  while (rightIndex < right.size()) {
-    result.add(right.get(rightIndex));
-    rightIndex++;
-  }
-
-  return result;
-}
-
 
