@@ -170,3 +170,45 @@ public class Helper{
   
 }
   
+public ArrayList<Card> mergeSortCards(ArrayList<Card> cards) {
+    if (cards.size() <= 1) {
+        return cards;
+    }
+
+    int mid = cards.size() / 2;
+    ArrayList<Card> left = new ArrayList<Card>(cards.subList(0, mid));
+    ArrayList<Card> right = new ArrayList<Card>(cards.subList(mid, cards.size()));
+
+    left = mergeSortCards(left);
+    right = mergeSortCards(right);
+
+    return mergeCards(left, right);
+}
+
+private ArrayList<Card> mergeCards(ArrayList<Card> left, ArrayList<Card> right) {
+    ArrayList<Card> merged = new ArrayList<Card>();
+    int leftIndex = 0;
+    int rightIndex = 0;
+
+    while (leftIndex < left.size() && rightIndex < right.size()) {
+        if (left.get(leftIndex).getValue() <= right.get(rightIndex).getValue()) {
+            merged.add(left.get(leftIndex));
+            leftIndex++;
+        } else {
+            merged.add(right.get(rightIndex));
+            rightIndex++;
+        }
+    }
+
+    while (leftIndex < left.size()) {
+        merged.add(left.get(leftIndex));
+        leftIndex++;
+    }
+
+    while (rightIndex < right.size()) {
+        merged.add(right.get(rightIndex));
+        rightIndex++;
+    }
+
+    return merged;
+}
