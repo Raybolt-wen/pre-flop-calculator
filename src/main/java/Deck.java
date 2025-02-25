@@ -94,8 +94,22 @@ public class Deck{
   }
 
   
-  
-  public void removeDoubles(Deck deck){
+  //Takes in a unsorted deck, sorts it and sets all cards of double rank to a single card
+  public ArrayList<Card> removeDoubles(ArrayList<Card> unSortedDeck){
+    ArrayList<Card> returner = new ArrayList<Card>();
+    ArrayList<Card> deck = helper.mergeSortCards(unSortedDeck);
+    for(int i = 0; i < deck.size()-1; i++){
+      if (deck.get(i).getValue() == (deck.get(i+1)).getValue()){
+        returner.add(deck.get(i));
+        i++;
+      }else {
+        returner.add(deck.get(i));
+      }
+    }
+    if(!(returner.contains(deck.get(deck.size()-1)))){
+       returner.add(deck.get(deck.size()-1));
+    }
+    return returner;
     
   }
   

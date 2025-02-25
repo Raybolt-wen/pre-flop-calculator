@@ -80,17 +80,19 @@ class River {
 
   public ArrayList<ArrayList<Integer> > isStraightIsStraightFlush(){
     int counter = 0;
+    Deck decked = new Deck(river);
     ArrayList<Integer> topCard = new ArrayList<Integer>();
-    ArrayList<Integer> rankRiverNoDup = helper.removePairs(rank_river);
+    ArrayList<Integer> rankRiverNoDup = deckHelper.makeRankList(deckHelper.removeDoubles(decked));
+    ArrayList<Integer> suitRiverNoDup = deckHelper.makeSuitList(deckHelper.removeDoubles(decked));
     for(int i = 0; i < (rankRiverNoDup.size()-3); i++){
       if ((rankRiverNoDup.get(i) == rankRiverNoDup.get(i+1)) && 
           (rankRiverNoDup.get(i) == rankRiverNoDup.get(i+2)) &&
           (rankRiverNoDup.get(i) == rankRiverNoDup.get(i+3)) &&
           (rankRiverNoDup.get(i) == rankRiverNoDup.get(i+4)) &&
-          (suit_river.get(i) == suit_river.get(i+1)) && 
-          (suit_river.get(i) == suit_river.get(i+2)) &&
-          (suit_river.get(i) == suit_river.get(i+3)) &&
-          (suit_river.get(i) == suit_river.get(i+4))) {
+          (suitRiverNoDup.get(i) == suitRiverNoDup.get(i+1)) && 
+          (suitRiverNoDup.get(i) == suitRiverNoDup.get(i+2)) &&
+          (suitRiverNoDup.get(i) == suitRiverNoDup.get(i+3)) &&
+          (suitRiverNoDup.get(i) == suitRiverNoDup.get(i+4))) {
             counter = 8;
             topCard.add(rankRiverNoDup.get(i+4));
             i++;
