@@ -8,7 +8,7 @@ public class Helper{
   public int Value_Card_Assigner(String card){
     if(card.equalsIgnoreCase("Ace") || 
        card.equalsIgnoreCase("A")){
-      return 1;
+      return 14;
     } else if(card.equalsIgnoreCase("Two") || 
               card.equalsIgnoreCase("2")){
       return 2;
@@ -113,5 +113,60 @@ public class Helper{
 
           return merged;
       }
+
+  public void printList(ArrayList<Integer> number){
+    for(int i = 0; i < number.size(); i++){
+      System.out.println(number.get(i));
+    }
+  }
+  
+  public void printListList(ArrayList<ArrayList<Integer> > number){
+    for(int i = 0; i < number.size(); i++){
+      for(int j = 0; j < (number.get(i)).size(); j++){
+        System.out.print((number.get(i).get(j)));
+      }
+      System.out.print("\n");
+    }
+  }
+  
+  public ArrayList<Integer> reverseArrayList(ArrayList<Integer> alist)
+    {
+        // Arraylist for storing reversed elements
+        // this.revArrayList = alist;
+        for (int i = 0; i < alist.size() / 2; i++) {
+            Integer temp = alist.get(i);
+            alist.set(i, alist.get(alist.size() - i - 1));
+            alist.set(alist.size() - i - 1, temp);
+        }
+
+        // Return the reversed arraylist
+        return alist;
+    }
+
+    // Iterate through all the elements and print
+    public void printElements(ArrayList<Integer> alist)
+    {
+        for (int i = 0; i < alist.size(); i++) {
+            System.out.print(alist.get(i) + " ");
+        }
+    }
+  //Given a sorted list of ints and returns the sorted list with all pairs brought to one
+  public ArrayList<Integer> removePairs(ArrayList<Integer> number){
+    ArrayList<Integer> newArray =  new ArrayList<Integer>();
+    for(int i = 1; i < number.size()-1; i++){
+      if(number.get(i) ==  number.get(i+1)){
+        newArray.add(number.get(i));
+        i++;
+      } else{
+        newArray.add(number.get(i));
+      }
+      
+    }
+    if(!(newArray.contains(number.get(number.size()-1)))){
+        newArray.add(number.get(number.size()-1));
+    }
+    return newArray;
+  }
+  
 }
   

@@ -20,7 +20,7 @@ public class Deck{
   public ArrayList<Integer> makeSuitList(Deck deck){
     ArrayList<Integer> suitDeck = new ArrayList<Integer>();
     for(int i = 0; i < deck.deck.size(); i++){
-        suitDeck.add((deck.deck.get(i)).value);
+        suitDeck.add((deck.deck.get(i)).suit);
     }
     return helper.mergeSort(suitDeck);
   }
@@ -91,6 +91,12 @@ public class Deck{
         i++;
       }
     }
+  }
+
+  
+  
+  public void removeDoubles(Deck deck){
+    
   }
   
 }

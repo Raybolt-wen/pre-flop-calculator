@@ -14,32 +14,47 @@ public class Main {
       ArrayList<Integer> suits = new ArrayList<Integer>();
       //reads the ranks and the suits and puts them into their respective lists
       
-      for(int i = 1; i < 5; i++){
-        System.out.println("Enter number" + i + " card rank ");
-        String rank = myObj.nextLine();
-        int make_rank = helper.Value_Card_Assigner(rank);
-        ranks.add(make_rank);
-        System.out.println("Enter number" + i + " card suit");
-        String suit = myObj.nextLine();  
-        int make_suit = helper.Suit_Card_Assigner(suit);
-        suits.add(make_suit);
-      }
+      // for(int i = 1; i < 5; i++){
+      //   System.out.println("Enter number" + i + " card rank ");
+      //   String rank = myObj.nextLine();
+      //   int make_rank = helper.Value_Card_Assigner(rank);
+      //   ranks.add(make_rank);
+      //   System.out.println("Enter number" + i + " card suit");
+      //   String suit = myObj.nextLine();  
+      //   int make_suit = helper.Suit_Card_Assigner(suit);
+      //   suits.add(make_suit);
+      // }
+    /*
       Card C_1 = new Card(suits.get(0), ranks.get(0));
       Card C_2 = new Card(suits.get(1), ranks.get(1));
       Hand H_1 = new Hand(C_1, C_2);
       Card C_3 = new Card(suits.get(2), ranks.get(2));
       Card C_4 = new Card(suits.get(3), ranks.get(3));
       Hand H_2 = new Hand(C_3, C_4);
-      ArrayList<Card> river = deckHelper.make_river(H_1, H_2);
+      */
+      Card C_1 = new Card(3, 1);
+      Card C_2 = new Card(4, 1);
+      Card C_3 = new Card(5, 1);
+      Card C_4 = new Card(6, 1);
+      Card C_5 = new Card(7, 1);
+      Card C_6 = new Card(5, 1);
+      Card C_7 = new Card(3, 1);
+      // ArrayList<Card> river = deckHelper.make_river(H_1, H_2);
+      ArrayList<Card> river = new ArrayList<Card>();
       river.add(C_1);
       river.add(C_2);
-      ArrayList<Integer> Information = new ArrayList<Integer>();
+      river.add(C_3);
+      river.add(C_4);
+      river.add(C_5);
+      river.add(C_6);
+      river.add(C_7);
+
+      ArrayList<ArrayList<Integer> > information =  new ArrayList<ArrayList<Integer> >(3);
       ArrayList<Integer> rank_river = new ArrayList<Integer>();
       ArrayList<Integer> suit_river = new ArrayList<Integer>();
-            River rivered = new River(river, Information, rank_river, suit_river);
-      
-      
-      
+      River rivered = new River(river, information, rank_river, suit_river);
+      helper.printListList(rivered.information);
+    
   }
 
 }

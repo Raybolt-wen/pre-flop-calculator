@@ -1,7 +1,7 @@
 public class Card {
   int suit;
   int value;
-  public Card(int suit, int value){
+  public Card(int value, int suit){
     this.suit = suit;
     this.value = value;
   }
